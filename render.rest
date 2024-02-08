@@ -9,3 +9,55 @@ GET https://emasonproject2.onrender.com/actors
 
 ###
 GET https://emasonproject2.onrender.com/oneActor/***
+
+###
+POST https://emasonproject2.onrender.com/newFilm 
+content-type: application/json
+
+{
+    "title": "Jurassic Park",
+    "releaseYear": 1993,
+    "rating": "PG-13",
+    "actors": [{"actorId": 5001, "name": "Sam Neill"}],
+    "category": "Action",
+    "director": "Steven Spielberg",
+    "length": "2 hr 7 min"
+}
+
+###
+POST https://emasonproject2.onrender.com/newActor 
+content-type: application/json
+
+{
+    "actorId": 6001,
+    "name": "Dwayne Johnson"
+}
+
+###
+PUT https://emasonproject2.onrender.com/updateFilm*** 
+content-type: application/json
+
+{
+    "title": "Jurassic Park **SPOILER- everyone dies**",
+    "releaseYear": 1993,
+    "rating": "PG-13",
+    "actors": [{"actorId": 5001, "name": "Sam Neill", "actorId": 5002, "name": "Laura Dern"}],
+    "category": "Action",
+    "director": "Steven Spielberg",
+    "length": "2 hr 7 min"
+}
+
+###
+PUT http://emasonproject2.onrender.com/updateActor/***
+content-type: application/json
+
+{
+    "actorId": 6001,
+    "name": "Dwayne 'The Rock' Johnson"
+}
+
+###
+DELETE http://emasonproject2.onrender.com/removeFilm/***
+
+###
+DELETE http://emasonproject2.onrender.com/removeActor/***

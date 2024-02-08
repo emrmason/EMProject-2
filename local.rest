@@ -58,7 +58,7 @@ content-type: application/json
 }
 
 ### 
-DELETE http://localhost:3000/deleteFilm/***
+DELETE http://localhost:3000/removeFilm/***
 
 ###
-DELETE http://localhost:3000/deleteActor/***
+DELETE http://localhost:3000/removeActor/***

@@ -9,5 +9,7 @@ routes.post("/newFilm", moviesController.newFilm);
 routes.post("/newActor", moviesController.newActor);
 routes.put("/updateFilm/:id", moviesController.updateFilm);
 routes.put("/updateActor/:id", moviesController.updateActor);
+routes.delete("/removeFilm/:id", moviesController.removeFilm);
+routes.delete("/removeActor/:id", moviesController.removeActor);
 
 module.exports = routes;

@@ -1,5 +1,5 @@
 const mongodb = require("../connectDB/connection");
-const { get } = require("../routes/movies");
+// const { get } = require("../routes/movies");
 const ObjectId = require("mongodb").ObjectId;
 
 const actorSchema = {
@@ -208,6 +208,36 @@ const updateActor = async (req, res) => {
   }
 };
 
+const removeFilm = async (req, res) => {
+  const client = await mongodb.connectDB();
+  const filmId = new ObjectId(req.params.id);
+  try {
+    const collection = client.db("movies").collection("films");
+    const result = await collection.deleteOne({ _id: filmId });
+    res.send(`Film ${filmId} has been removed.`);
+  } catch (error) {
+    console.log("Houston, we have a problem: ", error);
+  } finally {
+    client.close();
+    console.log("The way is shut.");
+  }
+};
+
+const removeActor = async (req, res) => {
+  const client = await mongodb.connectDB();
+  const actorId = new ObjectId(req.params.id);
+  try {
+    const collection = client.db("movies").collection("actors");
+    const result = await collection.deleteOne({ _id: actorId });
+    res.send(`Actor ${actorId} has been removed.`);
+  } catch (error) {
+    console.log("Houston, we have a problem: ", error);
+  } finally {
+    client.close();
+    console.log("The way is shut.");
+  }
+};
+
 module.exports = {
   listFilms,
   oneFilm,
@@ -217,6 +247,6 @@ module.exports = {
   newActor,
   updateFilm,
   updateActor,
-  // removeFilm,
-  // removeActor,
+  removeFilm,
+  removeActor,
 };
