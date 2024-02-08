@@ -1,13 +1,113 @@
 [
     {
         "title": "Hunt for the Wilderpeople",
-        "release-year": "2016",
+        "release-year": 2016,
         "rating": "PG-13",
-        "actors": {
-
-        }
+        "actors": [ 
+            { 
+                "id": 1001,
+                "name": "Sam Neill"
+            },
+            {
+                "id": 1002,
+                "name": "Julian Denison"
+            },
+            {
+                "id": 1003,
+                "name": "Rachel House"
+            }
+        ],
+        "category": "Comedy",
+        "director": "Taika Waititi",
+        "length": "1 hr 41 min"
+    },
+    {
+        "title": "It's a Wonderful Life",
+        "release-year": 1946,
+        "rating": "PG",
+        "actors": [ 
+            { 
+                "id": 1004,
+                "name": "James Stewart"
+            },
+            {
+                "id": 1005,
+                "name": "Donna Reed"
+            },
+            {
+                "id": 1006,
+                "name": "Lionel Barrymore"
+            }
+        ],
+        "category": "Drama",
+        "director": "Frank Capra",
+        "length": "2 hr 10 min"
+    },
+    {
+        "title": "Better Off Dead",
+        "release-year": 1985,
+        "rating": "PG",
+        "actors": [ 
+            { 
+                "id": 1007,
+                "name": "John Cusack"
+            },
+            {
+                "id": 1008,
+                "name": "Diane Franklin"
+            },
+            {
+                "id": 1009,
+                "name": "Curtis Armstrong"
+            }
+        ],
+        "category": "Comedy",
+        "director": "Savage Steve Holland",
+        "length": "1 hr 37 min"
+    },
+    {
+        "title": "The Princess Bride",
+        "release-year": 1987,
+        "rating": "PG",
+        "actors": [ 
+            { 
+                "id": 1010,
+                "name": "Cary Elwes"
+            },
+            {
+                "id": 1011,
+                "name": "Robin Wright"
+            },
+            {
+                "id": 1012,
+                "name": "Mandy Patinkin"
+            }
+        ],
+        "category": "Comedy",
+        "director": "Rpb Reiner",
+        "length": "1 hr 38 min"
+    },
+    {
+        "title": "That Thing You Do",
+        "release-year": 1996,
+        "rating": "PG",
+        "actors": [ 
+            { 
+                "id": 1013,
+                "name": "Tom Everett Scott"
+            },
+            {
+                "id": 1014,
+                "name": "Steve Zahn"
+            },
+            {
+                "id": 1015,
+                "name": "Tom Hanks"
+            }
+        ],
+        "category": "Comedy",
+        "director": "Tom",
+        "length": "1 hr 48 min"
     }
-
-
 
 ]

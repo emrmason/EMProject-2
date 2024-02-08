@@ -8,7 +8,6 @@ const connectDB = async () => {
   try {
     await client.connect();
     _db = client;
-    console.log("Connected to your movie house");
   } catch (error) {
     console.log(error);
   }

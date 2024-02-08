@@ -4,9 +4,11 @@ const port = process.env.port || 3000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-app.get("/", (req, res) => {
-  res.send("Running...");
-});
+require("dotenv").config();
+
+app.use(bodyParser.json());
+app.use("/", require("./routes/movies"));
+app.use(cors());
 
 app.listen(port, () => {
   console.log("Nothing to see here, move along...");
