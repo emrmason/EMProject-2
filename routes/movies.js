@@ -5,5 +5,9 @@ routes.get("/films", moviesController.listFilms);
 routes.get("/oneFilm/:id", moviesController.oneFilm);
 routes.get("/actors", moviesController.listActors);
 routes.get("/oneActor/:id", moviesController.oneActor);
+routes.post("/newFilm", moviesController.newFilm);
+routes.post("/newActor", moviesController.newActor);
+routes.put("/updateFilm/:id", moviesController.updateFilm);
+routes.put("/updateActor/:id", moviesController.updateActor);
 
 module.exports = routes;

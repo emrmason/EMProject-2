@@ -10,3 +10,55 @@ GET http://localhost:3000/actors
 ###
 GET http://localhost:3000/oneActor/***
 
+### 
+POST http://localhost:3000/newFilm
+content-type: application/json
+
+{
+    "title": "Jurassic Park",
+    "releaseYear": 1993,
+    "rating": "PG-13",
+    "actors": [{"actorId": 5001, "name": "Sam Neill"}],
+    "category": "Action",
+    "director": "Steven Spielberg",
+    "length": "2 hr 7 min"
+}
+
+### 
+POST http://localhost:3000/newActor
+content-type: application/json
+
+{
+    "actorId": 6001,
+    "name": "Dwayne Johnson"
+}
+
+### LOCAL - adding a spoiler, adding an actor 
+PUT http://localhost:3000/updateFilm/***
+content-type: application/json
+
+{
+    "title": "Jurassic Park **SPOILER- everyone dies**",
+    "releaseYear": 1993,
+    "rating": "PG-13",
+    "actors": [{"actorId": 5001, "name": "Sam Neill", "actorId": 5002, "name": "Laura Dern"}],
+    "category": "Action",
+    "director": "Steven Spielberg",
+    "length": "2 hr 7 min"
+}
+
+
+### LOCAL - adding an alias
+PUT http://localhost:3000/updateActor/***
+content-type: application/json
+
+{
+    "actorId": 6001,
+    "name": "Dwayne 'The Rock' Johnson"
+}
+
+### 
+DELETE http://localhost:3000/deleteFilm/***
+
+###
+DELETE http://localhost:3000/deleteActor/***
