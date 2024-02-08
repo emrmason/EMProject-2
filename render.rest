@@ -1,0 +1,11 @@
+###
+GET https://emasonproject2.onrender.com/films
+
+###
+GET https://emasonproject2.onrender.com/oneFilm/***
+
+###
+GET https://emasonproject2.onrender.com/actors
+
+###
+GET https://emasonproject2.onrender.com/oneActor/***
