@@ -208,7 +208,7 @@ const updateActor = async (req, res) => {
   }
 };
 
-const removeFilm = async (req, res) => {
+const deleteFilm = async (req, res) => {
   const client = await mongodb.connectDB();
   const filmId = new ObjectId(req.params.id);
   try {
@@ -223,7 +223,7 @@ const removeFilm = async (req, res) => {
   }
 };
 
-const removeActor = async (req, res) => {
+const deleteActor = async (req, res) => {
   const client = await mongodb.connectDB();
   const actorId = new ObjectId(req.params.id);
   try {
@@ -247,6 +247,6 @@ module.exports = {
   newActor,
   updateFilm,
   updateActor,
-  removeFilm,
-  removeActor,
+  deleteFilm,
+  deleteActor,
 };
