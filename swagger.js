@@ -7,6 +7,16 @@ const doc = {
   },
   host: "emasonproject2.onrender.com",
   schemes: ["https"],
+  // tags: [
+  //   {
+  //     name: "Movies",
+  //     descriptions: "Detailed Movie info"
+  //    }
+  // {
+  //   name: "Actors",
+  //   description: "Actors Names"
+  // }
+  // ]
 };
 
 const outputFile = "./swagger-output.json";

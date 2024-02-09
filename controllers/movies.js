@@ -132,7 +132,7 @@ const newFilm = async (req, res) => {
   try {
     const collection = await getCollection("movies", "films");
     const result = await collection.insertOne(newFilm);
-    res.send(`Insterted movie with _id: ${result.insertedId}`);
+    res.status(201).send(`Insterted movie with _id: ${result.insertedId}`);
   } catch (error) {
     console.error("Houston we have a problem: ", error);
   } finally {
@@ -150,7 +150,7 @@ const newActor = async (req, res) => {
   try {
     const collection = await getCollection("movies", "actors");
     const result = await collection.insertOne(newActor);
-    res.send(`insterted contact with _id: ${result.insertedId}`);
+    res.status(201).send(`insterted contact with _id: ${result.insertedId}`);
   } catch (error) {
     console.error("Houston we have a problem: ", error);
   } finally {
@@ -177,7 +177,7 @@ const updateFilm = async (req, res) => {
       },
     };
     const result = await collection.findOneAndUpdate(filter, update);
-    res.send(`Film ${filmId} updated.`);
+    res.status(204).send(`Film ${filmId} updated.`);
   } catch (error) {
     console.log("Houston, we have a problem: ", error);
   } finally {
@@ -199,7 +199,7 @@ const updateActor = async (req, res) => {
       },
     };
     const result = await collection.findOneAndUpdate(filter, update);
-    res.send(`Film ${actorId} updated.`);
+    res.status(204).send(`Film ${actorId} updated.`);
   } catch (error) {
     console.log("Houston, we have a problem: ", error);
   } finally {
@@ -214,7 +214,7 @@ const removeFilm = async (req, res) => {
   try {
     const collection = client.db("movies").collection("films");
     const result = await collection.deleteOne({ _id: filmId });
-    res.send(`Film ${filmId} has been removed.`);
+    res.status(200).send(`Film ${filmId} has been removed.`);
   } catch (error) {
     console.log("Houston, we have a problem: ", error);
   } finally {
@@ -229,7 +229,7 @@ const removeActor = async (req, res) => {
   try {
     const collection = client.db("movies").collection("actors");
     const result = await collection.deleteOne({ _id: actorId });
-    res.send(`Actor ${actorId} has been removed.`);
+    res.status(200).send(`Actor ${actorId} has been removed.`);
   } catch (error) {
     console.log("Houston, we have a problem: ", error);
   } finally {
