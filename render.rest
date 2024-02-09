@@ -48,7 +48,7 @@ content-type: application/json
 }
 
 ###
-PUT http://emasonproject2.onrender.com/updateActor/***
+PUT https://emasonproject2.onrender.com/updateActor/***
 content-type: application/json
 
 {
@@ -57,7 +57,7 @@ content-type: application/json
 }
 
 ###
-DELETE http://emasonproject2.onrender.com/removeFilm/***
+DELETE https://emasonproject2.onrender.com/removeFilm/***
 
 ###
-DELETE http://emasonproject2.onrender.com/removeActor/***
+DELETE https://emasonproject2.onrender.com/removeActor/***
