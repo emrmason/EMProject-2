@@ -1,45 +1,9 @@
-const mongodb = require("../connectDB/connection");
+const mongooose = require("../connectDB/connection");
 // const { get } = require("../routes/movies");
-const ObjectId = require("mongodb").ObjectId;
+const ObjectId = mongoose.Types.ObjectId;
+const connectDB = require("../connectDB/connection");
 
-const actorSchema = {
-  actorID: {
-    type: Number,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-};
-
-const filmSchema = {
-  title: {
-    type: String,
-    required: true,
-  },
-  releaseYear: {
-    type: Number,
-    required: true,
-  },
-  rating: {
-    type: String,
-    retuired: true,
-  },
-  actors: [{ actorSchema }],
-  category: {
-    type: String,
-    required: true,
-  },
-  director: {
-    type: String,
-    required: true,
-  },
-  length: {
-    type: String,
-    required: true,
-  },
-};
+connectDB();
 
 // Resource: ChatGPT helped me with details for breaking down my code into reusable parts. YAY!!!
 const getCollection = async (base, collectionName) => {
