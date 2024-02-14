@@ -241,7 +241,7 @@
         }
       }
     },
-    "/removeActor/{id}": {
+    "/deleteActor/{id}": {
       "delete": {
         "description": "",
         "parameters": [

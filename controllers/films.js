@@ -1,15 +1,15 @@
+const mongoose = require("mongoose");
 const { connectDB } = require("../connectDB/connection");
 const { ObjectId } = require("mongoose");
 
 connectDB();
 
 const getCollection = async (base, collectionName) => {
-  const client = await mongoose.connectDB();
-  return client.db(base).collection(collectionName);
+  return mongoose.connection.db.collection(collectionName);
 };
 
 const getQuery = async (collection, query) => {
-  return await collection.find(query).toArray();
+  return collection.find(query).toArray();
 };
 
 const listFilms = async (req, res, next) => {
@@ -44,18 +44,17 @@ const oneFilm = async (req, res, next) => {
 };
 
 const newFilm = async (req, res) => {
-  const client = await mongodb.connectDB();
-  const newFilm = {
-    title: req.body.title,
-    releaseYear: req.body.releaseYear,
-    rating: req.body.rating,
-    actors: req.body.actors,
-    category: req.body.category,
-    director: req.body.director,
-    length: req.body.length,
-  };
   try {
-    const collection = await getCollection("movies", "films");
+    const collection = getCollection("movies", "films");
+    const newFilm = {
+      title: req.body.title,
+      releaseYear: req.body.releaseYear,
+      rating: req.body.rating,
+      actors: req.body.actors,
+      category: req.body.category,
+      director: req.body.director,
+      length: req.body.length,
+    };
     const result = await collection.insertOne(newFilm);
     res.status(201).send(`Insterted movie with _id: ${result.insertedId}`);
   } catch (error) {
@@ -67,10 +66,9 @@ const newFilm = async (req, res) => {
 };
 
 const updateFilm = async (req, res) => {
-  const client = await mongodb.connectDB();
   try {
     const filmId = new ObjectId(req.params.id);
-    const collection = client.db("movies").collection("films");
+    const collection = mongoose.connection.db.collection("films");
     const filter = { _id: filmId };
     const update = {
       $set: {
@@ -83,7 +81,7 @@ const updateFilm = async (req, res) => {
         length: req.body.length,
       },
     };
-    const result = await collection.findOneAndUpdate(filter, update);
+    await collection.findOneAndUpdate(filter, update);
     res.status(204).send(`Film ${filmId} updated.`);
   } catch (error) {
     console.log("Houston, we have a problem: ", error);
@@ -94,11 +92,10 @@ const updateFilm = async (req, res) => {
 };
 
 const deleteFilm = async (req, res) => {
-  const client = await mongodb.connectDB();
-  const filmId = new ObjectId(req.params.id);
   try {
-    const collection = client.db("movies").collection("films");
-    const result = await collection.deleteOne({ _id: filmId });
+    const filmId = new ObjectId(req.params.id);
+    const collection = mongoose.connection.db.collection("films");
+    await collection.deleteOne({ _id: filmId });
     res.status(200).send(`Film ${filmId} has been removed.`);
   } catch (error) {
     console.log("Houston, we have a problem: ", error);

@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.port || 3000;
+const PORT = process.env.port || 3000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
@@ -20,6 +20,6 @@ app.use(cors());
 app.use("/", require("./routes/films"));
 app.use("/", require("./routes/actors"));
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log("Nothing to see here, move along...");
 });

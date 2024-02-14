@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const { connectDB } = require("../connectDB/connection");
 const { ObjectId } = require("mongoose");
 const { getCollection, getQuery } = require("./films");
@@ -22,7 +23,7 @@ const listActors = async (req, res, next) => {
 const oneActor = async (req, res, next) => {
   try {
     const actorId = new ObjectId(req.params.id);
-    const collection = await getCollection("movies", "actors");
+    const collection = getCollection("movies", "actors");
     const result = await getQuery(collection, { _id: actorId });
     if (result.length > 0) {
       res.send(result[0]);
@@ -36,13 +37,12 @@ const oneActor = async (req, res, next) => {
 };
 
 const newActor = async (req, res) => {
-  const client = await mongoose.connectDB();
-  const newActor = {
-    actorId: req.body.actorId,
-    name: req.body.name,
-  };
   try {
     const collection = await getCollection("movies", "actors");
+    const newActor = {
+      actorId: req.body.actorId,
+      name: req.body.name,
+    };
     const result = await collection.insertOne(newActor);
     res.status(201).send(`Inserted actor with _id: ${result.insertedId}`);
   } catch (error) {
@@ -54,10 +54,9 @@ const newActor = async (req, res) => {
 };
 
 const updateActor = async (req, res) => {
-  const client = await mongoose.connectDB();
   try {
     const actorId = new ObjectId(req.params.id);
-    const collection = client.db("movies").collection("actors");
+    const collection = mongoose.connection.db.collection("actors");
     const filter = { _id: actorId };
     const update = {
       $set: {
@@ -65,7 +64,7 @@ const updateActor = async (req, res) => {
         name: req.body.name,
       },
     };
-    const result = await collection.findOneAndUpdate(filter, update);
+    await collection.findOneAndUpdate(filter, update);
     res.status(204).send(`Film ${actorId} updated.`);
   } catch (error) {
     console.log("Houston, we have a problem: ", error);
@@ -76,11 +75,10 @@ const updateActor = async (req, res) => {
 };
 
 const deleteActor = async (req, res) => {
-  const client = await mongoose.connectDB();
-  const actorId = new ObjectId(req.params.id);
   try {
-    const collection = client.db("movies").collection("actors");
-    const result = await collection.deleteOne({ _id: actorId });
+    const actorId = new ObjectId(req.params.id);
+    const collection = mongoose.connection.db.collection("actors");
+    await collection.deleteOne({ _id: actorId });
     res.status(200).send(`Actor ${actorId} has been removed.`);
   } catch (error) {
     console.log("Houston, we have a problem: ", error);
