@@ -1,10 +1,10 @@
 const routes = require("express").Router();
-const moviesController = require("../controllers/movies");
+const filmsController = require("../controllers/films");
 
-routes.get("/", moviesController.listFilms);
-routes.get("/oneFilm/:id", moviesController.oneFilm);
-routes.post("/newFilm", moviesController.newFilm);
-routes.put("/updateFilm/:id", moviesController.updateFilm);
-routes.delete("/removeFilm/:id", moviesController.deleteFilm);
+routes.get("/", filmsController.listFilms);
+routes.get("/oneFilm/:id", filmsController.oneFilm);
+routes.post("/newFilm", filmsController.newFilm);
+routes.put("/updateFilm/:id", filmsController.updateFilm);
+routes.delete("/removeFilm/:id", filmsController.deleteFilm);
 
 module.exports = routes;

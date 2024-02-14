@@ -6,13 +6,19 @@ const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger-output.json");
 // const { validation } = require()
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// Environment variables
 require("dotenv").config();
 
+// Swagger documentation
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Middleware
 app.use(bodyParser.json());
-app.use("/", require("./routes/movies"));
 app.use(cors());
+
+//Routes
+app.use("/", require("./routes/films"));
+app.use("/", require("./routes/actors"));
 
 app.listen(port, () => {
   console.log("Nothing to see here, move along...");
