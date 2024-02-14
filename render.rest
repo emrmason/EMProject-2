@@ -1,16 +1,11 @@
-###
+### FILMS
+### Get all films
 GET https://emasonproject2.onrender.com/films
 
-###
+### Get one film
 GET https://emasonproject2.onrender.com/oneFilm/***
 
-###
-GET https://emasonproject2.onrender.com/actors
-
-###
-GET https://emasonproject2.onrender.com/oneActor/***
-
-###
+### Add new film
 POST https://emasonproject2.onrender.com/newFilm 
 content-type: application/json
 
@@ -24,16 +19,8 @@ content-type: application/json
     "length": "2 hr 7 min"
 }
 
-###
-POST https://emasonproject2.onrender.com/newActor 
-content-type: application/json
 
-{
-    "actorId": 6001,
-    "name": "Dwayne Johnson"
-}
-
-###
+### Update Film - add spoiler, add actor
 PUT https://emasonproject2.onrender.com/updateFilm*** 
 content-type: application/json
 
@@ -47,7 +34,26 @@ content-type: application/json
     "length": "2 hr 7 min"
 }
 
-###
+### Delete film
+DELETE https://emasonproject2.onrender.com/deleteFilm/***
+
+### ACTORS
+### Get all actors
+GET https://emasonproject2.onrender.com/actors
+
+### Get one actor
+GET https://emasonproject2.onrender.com/oneActor/***
+
+### Add new actor
+POST https://emasonproject2.onrender.com/newActor 
+content-type: application/json
+
+{
+    "actorId": 6001,
+    "name": "Dwayne Johnson"
+}
+
+### Update actor - add alias
 PUT https://emasonproject2.onrender.com/updateActor/***
 content-type: application/json
 
@@ -56,8 +62,5 @@ content-type: application/json
     "name": "Dwayne 'The Rock' Johnson"
 }
 
-###
-DELETE https://emasonproject2.onrender.com/removeFilm/***
-
-###
-DELETE https://emasonproject2.onrender.com/removeActor/***
+### Delete Actor
+DELETE https://emasonproject2.onrender.com/deleteActor/***

@@ -108,21 +108,6 @@ const deleteFilm = async (req, res) => {
   }
 };
 
-const deleteActor = async (req, res) => {
-  const client = await mongodb.connectDB();
-  const actorId = new ObjectId(req.params.id);
-  try {
-    const collection = client.db("movies").collection("actors");
-    const result = await collection.deleteOne({ _id: actorId });
-    res.status(200).send(`Actor ${actorId} has been removed.`);
-  } catch (error) {
-    console.log("Houston, we have a problem: ", error);
-  } finally {
-    client.close();
-    console.log("The way is shut.");
-  }
-};
-
 module.exports = {
   getCollection,
   getQuery,

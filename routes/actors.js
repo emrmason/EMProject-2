@@ -5,6 +5,6 @@ routes.get("/actors", actorsController.listActors);
 routes.get("/oneActor/:id", actorsController.oneActor);
 routes.post("/newActor", actorsController.newActor);
 routes.put("/updateActor/:id", actorsController.updateActor);
-routes.delete("/removeActor/:id", actorsController.deleteActor);
+routes.delete("/deleteActor/:id", actorsController.deleteActor);
 
 module.exports = routes;

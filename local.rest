@@ -1,16 +1,12 @@
-###
+### FILMS
+
+### All films
 GET http://localhost:3000/films 
 
-###
+### One Film
 GET http://localhost:3000/oneFilm/***
 
-###
-GET http://localhost:3000/actors
-
-###
-GET http://localhost:3000/oneActor/***
-
-### 
+### New Film
 POST http://localhost:3000/newFilm
 content-type: application/json
 
@@ -24,16 +20,7 @@ content-type: application/json
     "length": "2 hr 7 min"
 }
 
-### 
-POST http://localhost:3000/newActor
-content-type: application/json
-
-{
-    "actorId": 6001,
-    "name": "Dwayne Johnson"
-}
-
-### LOCAL - adding a spoiler, adding an actor 
+### Update Film- Adding a spoiler, adding an actor 
 PUT http://localhost:3000/updateFilm/***
 content-type: application/json
 
@@ -47,8 +34,27 @@ content-type: application/json
     "length": "2 hr 7 min"
 }
 
+### Delete Film
+DELETE http://localhost:3000/deleteFilm/***
 
-### LOCAL - adding an alias
+
+### ACTORS
+### All Actors
+GET http://localhost:3000/actors
+
+### One Actor
+GET http://localhost:3000/oneActor/***
+
+### New Actor
+POST http://localhost:3000/newActor
+content-type: application/json
+
+{
+    "actorId": 6001,
+    "name": "Dwayne Johnson"
+}
+
+### Update Actor- adding an alias
 PUT http://localhost:3000/updateActor/***
 content-type: application/json
 
@@ -57,8 +63,5 @@ content-type: application/json
     "name": "Dwayne 'The Rock' Johnson"
 }
 
-### 
-DELETE http://localhost:3000/removeFilm/***
-
-###
-DELETE http://localhost:3000/removeActor/***
+### Delete Actor
+DELETE http://localhost:3000/deleteActor/***
