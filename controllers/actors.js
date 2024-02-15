@@ -1,14 +1,16 @@
 const mongoose = require("mongoose");
 const { connectDB } = require("../connectDB/connection");
 const { ObjectId } = require("mongoose");
-const { getCollection, getQuery } = require("./films");
+// const { getCollection, getQuery } = require("./films");
 
 connectDB();
 
 const listActors = async (req, res, next) => {
   try {
-    const collection = await getCollection("movies", "actors");
-    const result = await getQuery(collection, {});
+    const collection = await mongoose.connection
+      .db("movies")
+      .collection("films");
+    const result = await collection.find({}).toArray();
     if (result.length > 0) {
       res.send(result);
     } else {
@@ -23,8 +25,10 @@ const listActors = async (req, res, next) => {
 const oneActor = async (req, res, next) => {
   try {
     const actorId = new ObjectId(req.params.id);
-    const collection = getCollection("movies", "actors");
-    const result = await getQuery(collection, { _id: actorId });
+    const collection = await mongoose.connection
+      .db("movies")
+      .collection("films");
+    const result = await collection.find({ _id: actorId }).toArray();
     if (result.length > 0) {
       res.send(result[0]);
     } else {
@@ -38,7 +42,9 @@ const oneActor = async (req, res, next) => {
 
 const newActor = async (req, res) => {
   try {
-    const collection = await getCollection("movies", "actors");
+    const collection = await mongoose.connection
+      .db("movies")
+      .collection("films");
     const newActor = {
       actorId: req.body.actorId,
       name: req.body.name,
@@ -56,7 +62,9 @@ const newActor = async (req, res) => {
 const updateActor = async (req, res) => {
   try {
     const actorId = new ObjectId(req.params.id);
-    const collection = mongoose.connection.db.collection("actors");
+    const collection = await mongoose.connection
+      .db("movies")
+      .collection("films");
     const filter = { _id: actorId };
     const update = {
       $set: {
@@ -77,7 +85,9 @@ const updateActor = async (req, res) => {
 const deleteActor = async (req, res) => {
   try {
     const actorId = new ObjectId(req.params.id);
-    const collection = mongoose.connection.db.collection("actors");
+    const collection = await mongoose.connection
+      .db("movies")
+      .collection("films");
     await collection.deleteOne({ _id: actorId });
     res.status(200).send(`Actor ${actorId} has been removed.`);
   } catch (error) {

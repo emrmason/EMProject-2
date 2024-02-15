@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //Routes
-app.use("/", require("./routes/films"));
-app.use("/", require("./routes/actors"));
+app.use("/films", require("./routes/films"));
+app.use("/actors", require("./routes/actors"));
 
 app.listen(PORT, () => {
   console.log("Nothing to see here, move along...");

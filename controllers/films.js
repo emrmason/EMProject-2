@@ -4,18 +4,18 @@ const { ObjectId } = require("mongoose");
 
 connectDB();
 
-const getCollection = async (base, collectionName) => {
-  return mongoose.connection.db.collection(collectionName);
-};
+// const getCollection = async (base, collectionName) => {
+//   return mongoose.connection.db(base).collection(collectionName);
+// };
 
-const getQuery = async (collection, query) => {
-  return collection.find(query).toArray();
-};
+// const getQuery = async (collection, query) => {
+//   return collection.find(query).toArray();
+// };
 
 const listFilms = async (req, res, next) => {
   try {
-    const collection = await getCollection("movies", "films");
-    const result = await getQuery(collection, {});
+    const collection = mongoose.connection.collection("films");
+    const result = await collection.find({}).toArray();
     if (result.length > 0) {
       res.send(result);
     } else {
@@ -30,8 +30,10 @@ const listFilms = async (req, res, next) => {
 const oneFilm = async (req, res, next) => {
   try {
     const movieId = new ObjectId(req.params.id);
-    const collection = await getCollection("movies", "films");
-    const result = await getQuery(collection, { _id: movieId });
+    const collection = await mongoose.connection
+      .db("movies")
+      .collection("films");
+    const result = await collection.find({ _id: movieId }).toArray();
     if (result.length > 0) {
       res.send(result[0]);
     } else {
@@ -45,7 +47,9 @@ const oneFilm = async (req, res, next) => {
 
 const newFilm = async (req, res) => {
   try {
-    const collection = getCollection("movies", "films");
+    const collection = await mongoose.connection
+      .db("movies")
+      .collection("films");
     const newFilm = {
       title: req.body.title,
       releaseYear: req.body.releaseYear,
@@ -106,8 +110,8 @@ const deleteFilm = async (req, res) => {
 };
 
 module.exports = {
-  getCollection,
-  getQuery,
+  // getCollection,
+  // getQuery,
   listFilms,
   oneFilm,
   newFilm,
