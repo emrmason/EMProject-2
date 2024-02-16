@@ -3,7 +3,7 @@ const { connectDB } = require("../connectDB/connection");
 const { ObjectId } = require("mongoose");
 // const { getCollection, getQuery } = require("./films");
 
-connectDB();
+// connectDB();
 
 const listActors = async (req, res, next) => {
   try {

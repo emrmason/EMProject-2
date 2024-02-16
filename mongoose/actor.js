@@ -11,4 +11,6 @@ const actorSchema = new mongoose.Schema({
   },
 });
 
-const Actor = mongoose.model("Actor", actorSchema);
+const actor = mongoose.model("Actor", actorSchema);
+
+module.exports = actor;

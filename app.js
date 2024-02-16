@@ -5,6 +5,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger-output.json");
+const {
+  filmValidationRules,
+  actorValidationRules,
+  validate,
+} = require("../validator");
+
 // const { validation } = require()
 // Environment variables
 require("dotenv").config();
@@ -17,9 +23,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //Routes
-app.use("/films", require("./routes/films"));
-app.use("/actors", require("./routes/actors"));
+app.use("/films", validate(filmValidationRules), require("./routes/films"));
+app.use("/actors", validate(actorValidationRules), require("./routes/actors"));
 
+//Server
 app.listen(PORT, () => {
   console.log("Nothing to see here, move along...");
 });

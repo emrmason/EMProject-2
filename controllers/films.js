@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { connectDB } = require("../connectDB/connection");
 const { ObjectId } = require("mongoose");
 
-connectDB();
+// connectDB();
 
 // const getCollection = async (base, collectionName) => {
 //   return mongoose.connection.db(base).collection(collectionName);

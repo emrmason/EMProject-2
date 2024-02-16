@@ -19,13 +19,17 @@ dotenv.config();
 const connectDB = async () => {
   try {
     const dbName = "movies";
-    const connectionURL = process.env.DB_URL + dbName;
-    await mongoose.connect(connectionURL);
+    // const connectionURL = process.env.DB_URL + dbName;
+    await mongoose.connect(process.env.DB_URL);
 
     console.log("Connected to MongoDB");
 
     // Use mongoose.connection.db to access the MongoDB database object
-    const db = mongoose.connection.db;
+    const db = mongoose.connection;
+    // .listCollections()
+    // .toArray(function (err, names) {
+    //   console.log(names);
+    // });
 
     // Check if collections exist before listing them
     const collections = await db.listCollections().toArray();
@@ -39,5 +43,6 @@ const connectDB = async () => {
     console.error("Error connecting to MongoDB:", error);
   }
 };
+connectDB();
 
 module.exports = { connectDB };
