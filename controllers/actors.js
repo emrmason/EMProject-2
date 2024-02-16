@@ -40,7 +40,7 @@ const oneActor = async (req, res, next) => {
   }
 };
 
-const newActor = async (req, res) => {
+const newActor = async (req, res, next) => {
   try {
     const collection = await mongoose.connection
       .db("movies")

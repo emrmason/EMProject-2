@@ -9,7 +9,7 @@ const {
   filmValidationRules,
   actorValidationRules,
   validate,
-} = require("../validator");
+} = require("./validator");
 
 // const { validation } = require()
 // Environment variables
@@ -23,8 +23,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //Routes
-app.use("/films", validate(filmValidationRules), require("./routes/films"));
-app.use("/actors", validate(actorValidationRules), require("./routes/actors"));
+app.use("/films", require("./routes/films"));
+app.use("/actors", require("./routes/actors"));
 
 //Server
 app.listen(PORT, () => {

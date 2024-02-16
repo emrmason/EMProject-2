@@ -1,4 +1,4 @@
-const { check } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 
 const filmValidationRules = () => {
   return [body("releaseYear").isLength({ min: 4 })];
@@ -10,7 +10,7 @@ const actorValidationRules = () => {
 
 const validate = (req, res, next) => {
   const errors = validationResult(req);
-  if (errors.isEmtpy()) {
+  if (errors.isEmpty()) {
     return next();
   }
   const extractedErrors = [];
