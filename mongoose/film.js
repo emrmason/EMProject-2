@@ -4,7 +4,7 @@ const filmSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
+      required: [true, "Name that movie..."],
     },
     releaseYear: {
       type: Number,
@@ -28,7 +28,7 @@ const filmSchema = new mongoose.Schema(
     ],
     category: {
       type: String,
-      required: true,
+      required: [true, "Is it comedy, drama, action?"],
     },
     director: {
       type: String,
@@ -36,7 +36,7 @@ const filmSchema = new mongoose.Schema(
     },
     length: {
       type: String,
-      required: true,
+      required: [true, "Hours first, then minutes ( _ hr _ min)"],
     },
   },
   { versionKey: false }

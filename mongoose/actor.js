@@ -8,7 +8,7 @@ const actorSchema = new mongoose.Schema(
     },
     name: {
       type: String,
-      required: true,
+      required: [true, "Every actor has a name!"],
     },
   },
   { versionKey: false }
