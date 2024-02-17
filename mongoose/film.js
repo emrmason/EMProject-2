@@ -16,7 +16,7 @@ const filmSchema = new mongoose.Schema(
     },
     actors: [
       mongoose.Schema({
-        actorID: {
+        actorId: {
           type: Number,
           required: true,
         },

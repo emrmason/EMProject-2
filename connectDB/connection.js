@@ -8,10 +8,9 @@ console.log("DB Connected!");
 
 // Close Mongoose connection on SIGINT (Ctrl+C)
 process.on("SIGINT", function () {
-  mongoose.connection.close(function () {
-    console.log("Mongoose connection closed with app termination");
-    process.exit(0);
-  });
+  mongoose.connection.close();
+  console.log("The way is shut.");
+  process.exit(0);
 });
 
 const connectDB = mongoose.connection;
