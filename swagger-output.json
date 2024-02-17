@@ -11,7 +11,7 @@
     "https"
   ],
   "paths": {
-    "/": {
+    "/films": {
       "get": {
         "description": "",
         "responses": {
@@ -19,30 +19,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/oneFilm/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      }
-    },
-    "/newFilm": {
+      },
       "post": {
         "description": "",
         "parameters": [
@@ -80,11 +57,30 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           }
         }
       }
     },
-    "/updateFilm/{id}": {
+    "/films/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "put": {
         "description": "",
         "parameters": [
@@ -130,9 +126,7 @@
             "description": "No Content"
           }
         }
-      }
-    },
-    "/removeFilm/{id}": {
+      },
       "delete": {
         "description": "",
         "parameters": [
@@ -158,30 +152,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/oneActor/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      }
-    },
-    "/newActor": {
+      },
       "post": {
         "description": "",
         "parameters": [
@@ -204,11 +175,30 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           }
         }
       }
     },
-    "/updateActor/{id}": {
+    "/actors/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "put": {
         "description": "",
         "parameters": [
@@ -235,13 +225,14 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "204": {
             "description": "No Content"
           }
         }
-      }
-    },
-    "/deleteActor/{id}": {
+      },
       "delete": {
         "description": "",
         "parameters": [
