@@ -1,16 +1,19 @@
-const mongoose = require("../connectDB/connection");
+const mongoose = require("mongoose");
 
-const actorSchema = new mongoose.Schema({
-  actorID: {
-    type: Number,
-    required: true,
+const actorSchema = new mongoose.Schema(
+  {
+    actorId: {
+      type: Number,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
   },
-  name: {
-    type: String,
-    required: true,
-  },
-});
+  { versionKey: false }
+);
 
-const actor = mongoose.model("Actor", actorSchema);
+const Actor = mongoose.model("Actor", actorSchema);
 
-module.exports = actor;
+module.exports = Actor;

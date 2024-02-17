@@ -4,10 +4,10 @@
 GET http://localhost:3000/films 
 
 ### One Film
-GET http://localhost:3000/oneFilm/***
+GET http://localhost:3000/films/***
 
 ### New Film
-POST http://localhost:3000/newFilm
+POST http://localhost:3000/films
 content-type: application/json
 
 {
@@ -21,7 +21,7 @@ content-type: application/json
 }
 
 ### Update Film- Adding a spoiler, adding an actor 
-PUT http://localhost:3000/updateFilm/***
+PUT http://localhost:3000/films/***
 content-type: application/json
 
 {
@@ -35,7 +35,7 @@ content-type: application/json
 }
 
 ### Delete Film
-DELETE http://localhost:3000/deleteFilm/***
+DELETE http://localhost:3000/films/***
 
 
 ### ACTORS
@@ -43,10 +43,10 @@ DELETE http://localhost:3000/deleteFilm/***
 GET http://localhost:3000/actors
 
 ### One Actor
-GET http://localhost:3000/oneActor/***
+GET http://localhost:3000/actors/***
 
 ### New Actor
-POST http://localhost:3000/newActor
+POST http://localhost:3000/actors
 content-type: application/json
 
 {
@@ -55,7 +55,7 @@ content-type: application/json
 }
 
 ### Update Actor- adding an alias
-PUT http://localhost:3000/updateActor/***
+PUT http://localhost:3000/actors/***
 content-type: application/json
 
 {
@@ -64,4 +64,4 @@ content-type: application/json
 }
 
 ### Delete Actor
-DELETE http://localhost:3000/deleteActor/***
+DELETE http://localhost:3000/actors/***

@@ -1,26 +1,11 @@
 const mongoose = require("mongoose");
 const { connectDB } = require("../connectDB/connection");
-const { ObjectId } = require("mongoose");
-
-// connectDB();
-
-// const getCollection = async (base, collectionName) => {
-//   return mongoose.connection.db(base).collection(collectionName);
-// };
-
-// const getQuery = async (collection, query) => {
-//   return collection.find(query).toArray();
-// };
+const Film = require("../mongoose/film");
 
 const listFilms = async (req, res, next) => {
   try {
-    const collection = mongoose.connection.collection("films");
-    const result = await collection.find({}).toArray();
-    if (result.length > 0) {
-      res.send(result);
-    } else {
-      res.send("Couldn't find anything...");
-    }
+    const films = await Film.find();
+    res.send(films);
   } catch (error) {
     console.log(error);
     next(error);
@@ -28,17 +13,10 @@ const listFilms = async (req, res, next) => {
 };
 
 const oneFilm = async (req, res, next) => {
+  const filmId = req.params.id;
   try {
-    const movieId = new ObjectId(req.params.id);
-    const collection = await mongoose.connection
-      .db("movies")
-      .collection("films");
-    const result = await collection.find({ _id: movieId }).toArray();
-    if (result.length > 0) {
-      res.send(result[0]);
-    } else {
-      res.status(404).send("Couldn't find the movie you're looking for.");
-    }
+    const result = await Film.findById(filmId);
+    res.send(result);
   } catch (error) {
     console.log(error);
     next(error);

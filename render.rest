@@ -3,10 +3,10 @@
 GET https://emasonproject2.onrender.com/films
 
 ### Get one film
-GET https://emasonproject2.onrender.com/oneFilm/***
+GET https://emasonproject2.onrender.com/films/***
 
 ### Add new film
-POST https://emasonproject2.onrender.com/newFilm 
+POST https://emasonproject2.onrender.com/films
 content-type: application/json
 
 {
@@ -21,7 +21,7 @@ content-type: application/json
 
 
 ### Update Film - add spoiler, add actor
-PUT https://emasonproject2.onrender.com/updateFilm*** 
+PUT https://emasonproject2.onrender.com/films/*** 
 content-type: application/json
 
 {
@@ -35,17 +35,17 @@ content-type: application/json
 }
 
 ### Delete film
-DELETE https://emasonproject2.onrender.com/deleteFilm/***
+DELETE https://emasonproject2.onrender.com/films/***
 
 ### ACTORS
 ### Get all actors
 GET https://emasonproject2.onrender.com/actors
 
 ### Get one actor
-GET https://emasonproject2.onrender.com/oneActor/***
+GET https://emasonproject2.onrender.com/actors/***
 
 ### Add new actor
-POST https://emasonproject2.onrender.com/newActor 
+POST https://emasonproject2.onrender.com/actors
 content-type: application/json
 
 {
@@ -54,7 +54,7 @@ content-type: application/json
 }
 
 ### Update actor - add alias
-PUT https://emasonproject2.onrender.com/updateActor/***
+PUT https://emasonproject2.onrender.com/actors/***
 content-type: application/json
 
 {
@@ -63,4 +63,4 @@ content-type: application/json
 }
 
 ### Delete Actor
-DELETE https://emasonproject2.onrender.com/deleteActor/***
+DELETE https://emasonproject2.onrender.com/actors/***

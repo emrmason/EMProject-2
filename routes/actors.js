@@ -2,15 +2,15 @@ const routes = require("express").Router();
 const actorsController = require("../controllers/actors");
 const { actorValidationRules, validate } = require("../validator");
 
-routes.get("/", actorsController.listActors);
-routes.get("/oneActor/:id", actorsController.oneActor);
+routes.get("/actors", actorsController.listActors);
+routes.get("/actors/:id", actorsController.oneActor);
 routes.post(
-  "/newActor",
+  "/actors",
   actorValidationRules(),
   validate,
   actorsController.newActor
 );
-routes.put("/updateActor/:id", actorsController.updateActor);
-routes.delete("/deleteActor/:id", actorsController.deleteActor);
+routes.put("/actors/:id", actorsController.updateActor);
+routes.delete("/actors/:id", actorsController.deleteActor);
 
 module.exports = routes;
