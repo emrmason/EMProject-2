@@ -18,14 +18,6 @@ app.use(cors());
 app.use("/", require("./routes/films"));
 app.use("/", require("./routes/actors"));
 
-//Error handling
-process.on("uncaughtException", (err, origin) => {
-  console.log(
-    process.stderr.id,
-    `Caught exception: ${err}/n` + `Exception origin: ${origin}`
-  );
-});
-
 //Server
 app.listen(PORT, () => {
   console.log("Nothing to see here, move along...");
