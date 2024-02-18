@@ -1,4 +1,4 @@
-const { body, validationResult } = require("express-validator");
+const { body, param } = require("express-validator");
 const Actor = require("./mongoose/actor");
 const Film = require("./mongoose/film");
 
@@ -43,10 +43,15 @@ const validate = (req, res, next) => {
   });
 };
 
+// Error Handling
+const handleErrors = (fn) => (req, res, next) =>
+  Promise.resolve(fn(req, res, next)).catch(next);
+
 module.exports = {
   filmValidationRules,
   actorValidationRules,
   updateFilmValidationRules,
   updateActorValidationRules,
   validate,
+  handleErrors,
 };
