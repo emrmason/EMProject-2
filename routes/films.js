@@ -11,8 +11,8 @@ routes.get("/films/:id", filmsController.oneFilm);
 routes.post("/films", filmValidationRules(), validate, filmsController.newFilm);
 routes.put(
   "/films/:id",
-  filmValidationRules(),
   updateFilmValidationRules(),
+  filmValidationRules(),
   filmsController.updateFilm
 );
 routes.delete("/films/:id", filmsController.deleteFilm);

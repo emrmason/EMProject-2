@@ -11,8 +11,8 @@ POST http://localhost:3000/films
 content-type: application/json
 
 {
-    "title": ,
-    "releaseYear": 193,
+    "title": "Jurassic Park",
+    "releaseYear": 1993,
     "rating": "PG-13",
     "actors": [{"actorId": 5001, "name": "Sam Neill"}],
     "category": "Action",
@@ -36,7 +36,6 @@ content-type: application/json
 
 ### Delete Film
 DELETE http://localhost:3000/films/***
-
 
 ### ACTORS
 ### All Actors

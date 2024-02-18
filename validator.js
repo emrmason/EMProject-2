@@ -1,4 +1,4 @@
-const { body, param } = require("express-validator");
+const { body, param, validationResult } = require("express-validator");
 const Actor = require("./mongoose/actor");
 const Film = require("./mongoose/film");
 
@@ -15,18 +15,18 @@ const actorValidationRules = () => {
 };
 
 // Additional PUT validation functions
-const updateActorValidationRules = () => {
-  return [
-    param("id")
-      .custom((value) => Actor._id.isValid(value))
-      .withMessage("Invalid id for update."),
-  ];
-};
-
 const updateFilmValidationRules = () => {
   return [
     param("id")
       .custom((value) => Film._id.isValid(value))
+      .withMessage("Invalid id for update."),
+  ];
+};
+
+const updateActorValidationRules = () => {
+  return [
+    param("id")
+      .custom((value) => Actor.exists({ _id: value }))
       .withMessage("Invalid id for update."),
   ];
 };
@@ -43,15 +43,10 @@ const validate = (req, res, next) => {
   });
 };
 
-// Error Handling
-const handleErrors = (fn) => (req, res, next) =>
-  Promise.resolve(fn(req, res, next)).catch(next);
-
 module.exports = {
   filmValidationRules,
   actorValidationRules,
   updateFilmValidationRules,
   updateActorValidationRules,
   validate,
-  handleErrors,
 };

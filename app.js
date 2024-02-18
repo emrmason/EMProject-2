@@ -6,7 +6,7 @@ const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger-output.json");
 const dotenv = require("dotenv").config();
-const validator = require("./validator/");
+const validator = require("./validator");
 
 // Swagger documentation
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -18,12 +18,15 @@ app.use(cors());
 //Routes
 app.use("/", require("./routes/films"));
 app.use("/", require("./routes/actors"));
-app.use("/", validator.handleErrors());
 
 //Error Handler
-app.use(async (err, req, res, next) => {
+app.use((err, req, res, next) => {
   console.error(`Error at: "${req.originalUrl}": ${err.message}`);
-  res.render("errors/error", err.status || "Server Error", err.message);
+  if (err instanceof NotFoundError) {
+    res.status(404).json({ error: "Not Found" });
+  } else {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 //Server
