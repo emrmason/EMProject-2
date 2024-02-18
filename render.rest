@@ -11,7 +11,7 @@ content-type: application/json
 
 {
     "title": "Jurassic Park",
-    "releaseYear": 1993,
+    "releaseYear": 193,
     "rating": "PG-13",
     "actors": [{"actorId": 5001, "name": "Sam Neill"}],
     "category": "Action",
