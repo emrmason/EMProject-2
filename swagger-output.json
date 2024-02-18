@@ -58,8 +58,8 @@
           "201": {
             "description": "Created"
           },
-          "422": {
-            "description": "Unprocessable Entity"
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -176,8 +176,8 @@
           "201": {
             "description": "Created"
           },
-          "422": {
-            "description": "Unprocessable Entity"
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -230,6 +230,9 @@
           },
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
