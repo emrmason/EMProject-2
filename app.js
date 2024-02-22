@@ -16,6 +16,12 @@ const config = {
   baseURL: process.env.BASE_URL || "http://localhost:3000",
   clientID: process.env.AUTH0_CLIENT_ID,
   issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
+  protected: (req, res, next) => {
+    if (!req.oidc.isAuthenticated()) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    next();
+  },
 };
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
