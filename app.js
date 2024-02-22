@@ -12,10 +12,10 @@ const { auth } = require("express-openid-connect");
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: "a long, randomly-generated string stored in env",
-  baseURL: "http://localhost:3000",
-  clientID: "wTrjX8pkepNuUguHWYZebodjtdbc6g9s",
-  issuerBaseURL: "https://dev-ejq6nyomxig7wwih.us.auth0.com",
+  secret: process.env.AUTH0_CLIENT_SECRET,
+  baseURL: process.env.BASE_URL || "http://localhost:3000",
+  clientID: process.env.AUTH0_CLIENT_ID,
+  issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
 };
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
@@ -25,8 +25,14 @@ app.use(auth(config));
 app.get("/", (req, res) => {
   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
 });
+
 // Swagger documentation
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(
+  "/api-docs",
+  config.protected,
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument)
+);
 
 // Middleware
 app.use(bodyParser.json());
