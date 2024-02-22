@@ -7,7 +7,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger-output.json");
 const dotenv = require("dotenv").config();
 const validator = require("./validator");
-const { auth } = require("express-openid-connect");
+const { auth, requiresAuth } = require("express-openid-connect");
 
 const config = {
   authRequired: false,
@@ -16,12 +16,6 @@ const config = {
   baseURL: process.env.BASE_URL || "http://localhost:3000",
   clientID: process.env.AUTH0_CLIENT_ID,
   issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
-  protected: (req, res, next) => {
-    if (!req.oidc.isAuthenticated()) {
-      return res.status(401).json({ error: "Unauthorized" });
-    }
-    next();
-  },
 };
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
@@ -35,7 +29,7 @@ app.get("/", (req, res) => {
 // Swagger documentation
 app.use(
   "/api-docs",
-  config.protected,
+  config.authRequired ? requiresAuth() : (req, res, next) => next(),
   swaggerUi.serve,
   swaggerUi.setup(swaggerDocument)
 );
