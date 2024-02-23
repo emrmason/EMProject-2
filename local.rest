@@ -1,5 +1,11 @@
 ### FILMS
 
+### Login
+GET http://localhost:3000/login
+
+### Logout
+GET http://localhost:3000/logout
+
 ### All films
 GET http://localhost:3000/films 
 
