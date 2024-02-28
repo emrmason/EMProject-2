@@ -26,10 +26,9 @@ app.get("/", (req, res) => {
   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
 });
 
-// Don't need this unless I have a "profile" endpoint.
-// app.get("/profile", requiresAuth(), (req, res) => {
-//   res.send(JSON.stringify(req.oidc.user));
-// });
+app.get("/profile", requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
 
 // Swagger documentation
 app.use(
