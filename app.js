@@ -13,10 +13,14 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: process.env.AUTH0_CLIENT_SECRET,
-  baseURL: "http://localhost:3000",
+  baseURL: "https://emasonproject2.onrender.com",
   clientID: process.env.AUTH0_CLIENT_ID,
   issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
 };
+
+// Middleware
+app.use(bodyParser.json());
+app.use(cors());
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
@@ -37,10 +41,6 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(swaggerDocument)
 );
-
-// Middleware
-app.use(bodyParser.json());
-app.use(cors());
 
 //Routes
 app.use("/", require("./routes/films"));
