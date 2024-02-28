@@ -11,17 +11,17 @@ routes.get("/actors", actorsController.listActors);
 routes.get("/actors/:id", actorsController.oneActor);
 routes.post(
   "/actors",
+  requiresAuth(),
   actorValidationRules(),
   validate,
-  requiresAuth(),
   actorsController.newActor
 );
 routes.put(
   "/actors/:id",
+  requiresAuth(),
   updateActorValidationRules(),
   actorValidationRules(),
   validate,
-  requiresAuth(),
   actorsController.updateActor
 );
 routes.delete("/actors/:id", requiresAuth(), actorsController.deleteActor);
