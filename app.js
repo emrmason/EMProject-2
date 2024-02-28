@@ -47,14 +47,14 @@ app.use("/", require("./routes/films"));
 app.use("/", require("./routes/actors"));
 
 //Error Handler
-app.use((err, req, res, next) => {
-  console.error(`Error at: "${req.originalUrl}": ${err.message}`);
-  if (err instanceof NotFoundError) {
-    res.status(404).json({ error: "Not Found" });
-  } else {
-    res.json({ err, message });
-  }
-});
+// app.use((err, req, res, next) => {
+//   console.error(`Error at: "${req.originalUrl}": ${err.message}`);
+//   if (err instanceof NotFoundError) {
+//     res.status(404).json({ error: "Not Found" });
+//   } else {
+//     res.json({ err, message });
+//   }
+// });
 
 //Server
 app.listen(PORT, () => {
