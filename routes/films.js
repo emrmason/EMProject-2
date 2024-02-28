@@ -11,17 +11,17 @@ routes.get("/films", filmsController.listFilms);
 routes.get("/films/:id", filmsController.oneFilm);
 routes.post(
   "/films",
+  requiresAuth(),
   filmValidationRules(),
   validate,
-  requiresAuth(),
   filmsController.newFilm
 );
 routes.put(
   "/films/:id",
+  requiresAuth(),
   updateFilmValidationRules(),
   filmValidationRules(),
   validate,
-  requiresAuth(),
   filmsController.updateFilm
 );
 routes.delete("/films/:id", requiresAuth(), filmsController.deleteFilm);
