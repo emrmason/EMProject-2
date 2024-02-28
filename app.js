@@ -52,7 +52,7 @@ app.use((err, req, res, next) => {
   if (err instanceof NotFoundError) {
     res.status(404).json({ error: "Not Found" });
   } else {
-    res.status(500).json({ error: "Internal Server Error" });
+    res.json({ err, message });
   }
 });
 
